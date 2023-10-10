@@ -1,8 +1,7 @@
 package io.github.willroberts.springgrpcservice;
 
-import java.io.IOException;
+import java.util.logging.Logger;
 
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,6 +12,8 @@ import io.grpc.protobuf.services.ProtoReflectionService;
 @SpringBootApplication
 public class SpringGrpcServiceApplication {
 	public static void main(String[] args) {
+		Logger logger = Logger.getLogger(SpringGrpcServiceApplication.class.getName());
+
 		SpringApplication.run(SpringGrpcServiceApplication.class, args);
 
 		Server server = ServerBuilder
@@ -22,17 +23,17 @@ public class SpringGrpcServiceApplication {
 				.build();
 
 		try {
-			System.out.println("Starting gRPC server on localhost:8000");
+			logger.info("Starting gRPC server on localhost:8000");
 			server.start();
 		} catch (Exception e) {
-			System.out.println("Failed to start gRPC server:" + e);
+			logger.info("Failed to start gRPC server:" + e);
 		}
 
 		try {
-			System.out.println("Listening for requests");
+			logger.info("Listening for requests");
 			server.awaitTermination();
 		} catch (Exception e) {
-			System.out.println("Error during gRPC server operation:" + e);
+			logger.info("Error during gRPC server operation:" + e);
 		}
 	}
 }
