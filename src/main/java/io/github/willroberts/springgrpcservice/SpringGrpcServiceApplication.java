@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.protobuf.services.ProtoReflectionService;
 
 @SpringBootApplication
 public class SpringGrpcServiceApplication {
@@ -16,7 +17,9 @@ public class SpringGrpcServiceApplication {
 
 		Server server = ServerBuilder
 				.forPort(8000)
-				.addService(new HelloServiceImpl()).build();
+				.addService(new HelloServiceImpl())
+				.addService(ProtoReflectionService.newInstance())
+				.build();
 
 		try {
 			System.out.println("Starting gRPC server on localhost:8000");
