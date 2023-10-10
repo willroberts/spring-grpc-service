@@ -2,6 +2,8 @@
 
 This is an example gRPC service using Java 21 and the Spring Boot framework.
 
+The service's protobuf interface is compiled to both Java and C++ by Gradle.
+
 ## Setup
 
 Use SDKMAN to install Java 21 and Gradle 8.4:
