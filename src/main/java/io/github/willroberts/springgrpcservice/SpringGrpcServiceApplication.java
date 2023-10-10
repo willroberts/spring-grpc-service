@@ -27,6 +27,7 @@ public class SpringGrpcServiceApplication {
 			server.start();
 		} catch (Exception e) {
 			logger.info("Failed to start gRPC server:" + e);
+			return;
 		}
 
 		try {
