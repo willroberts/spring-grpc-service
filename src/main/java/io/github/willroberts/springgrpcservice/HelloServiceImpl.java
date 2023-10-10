@@ -8,6 +8,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 		String body = new StringBuilder()
 				.append("Hello, ")
 				.append(req.getName())
+				.append("!")
 				.toString();
 
 		HelloResponse resp = HelloResponse.newBuilder()
